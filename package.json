@@ -2,7 +2,8 @@
   "name": "sprint_2",
   "version": "1.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo \"compilando os arquivos que existem na pasta src. \n\n[Diretorio atual]:\" && echo $INIT_CWD && tsc --target es2021 --module es6 $INIT_CWD/src/*ts --outDir $INIT_CWD/build"
   },
   "author": "Vinícius Seabra",
   "license": "GPL",
