@@ -5,13 +5,13 @@ console.log(vowelCounter.countVowels("exemplo")) // printa 3 no console
 
 // exemplo de uso com a a palavra recebida por input em um form
 
-const form = document.querySelector("#vowel-form") as HTMLFormElement
-const resultSpan = document.querySelector("#result-display") as HTMLSpanElement
+const form: HTMLFormElement = document.querySelector("#vowel-form") as HTMLFormElement
+const resultSpan: HTMLSpanElement = document.querySelector("#result-display") as HTMLSpanElement
 
-form.addEventListener("submit", (event) => {
+form.addEventListener("submit", (event: Event) => {
   event.preventDefault()
-  const input = form.elements.namedItem("text-input") as HTMLInputElement
-  const vowelCount = vowelCounter.countVowels(input.value)
+  const input: HTMLInputElement = form.elements.namedItem("text-input") as HTMLInputElement
+  const vowelCount: number = vowelCounter.countVowels(input.value)
 
   resultSpan.innerText = `${vowelCount} vogais`
 })
