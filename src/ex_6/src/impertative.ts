@@ -1,13 +1,13 @@
-import { Person, Update, Property } from "./types"
+import { IPerson, IUpdate, TProperty } from "./types"
 
 /**
  * basicamente a mesma coisa que a implementaçao em main.ts. Só que aqui os metodos modificam diretamente o campo
  * scientists. mas para quem usa a classe não faz diferença(as funções recembem os mesmos argumentos).
  */
 class ScientistsImperative {
-  private scientists: Person[]
+  private scientists: IPerson[]
 
-  constructor(scientistList: Person[]) {
+  constructor(scientistList: IPerson[]) {
     this.scientists = scientistList
   }
 
@@ -18,7 +18,7 @@ class ScientistsImperative {
    * @param field - o campo que se deseja retornar, pode ser "id" | "name" | "bio"
    * @returns o valor do campo especificado ou undefined
    */
-  getFieldbyId(id: number, field: Property): number | string | undefined {
+  getFieldbyId(id: number, field: TProperty): number | string | undefined {
     for (const scientist of this.scientists) {
       if (scientist.id === id) {
         return scientist[field]
@@ -34,7 +34,7 @@ class ScientistsImperative {
    * @param update - o update que será aplicado ao scientista
    * @returns void
    */
-  updateById(id: number, update: Update): void {
+  updateById(id: number, update: IUpdate): void {
     for (let i = 0; i < this.scientists.length; i++) {
       if (this.scientists[i].id === id) {
         this.scientists[i] = { ...this.scientists[i], ...update }

@@ -1,4 +1,4 @@
-import { Person } from "./types"
+import { IPerson } from "./types"
 import { Scientists } from "./main"
 import { ScientistsImperative } from "./impertative"
 
@@ -6,7 +6,7 @@ import { ScientistsImperative } from "./impertative"
  * exemplos de uso. 
  */
 
-const personList: Person[] = [
+const personList: IPerson[] = [
   {
     id: 1,
     name: "Ada Lovelace",
