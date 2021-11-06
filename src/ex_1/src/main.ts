@@ -1,7 +1,7 @@
-import { vowelCounter } from "./ex_1.js"
+import { VowelCounter } from "./ex_1.js"
 
 // exemplo de uso com a palavra recebida diretamente como parámetro
-console.log(vowelCounter.countVowels("exemplo")) // printa 3 no console
+console.log(VowelCounter.count("exemplo")) 
 
 // exemplo de uso com a a palavra recebida por input em um form
 
@@ -11,7 +11,7 @@ const resultSpan: HTMLSpanElement = document.querySelector("#result-display") as
 form.addEventListener("submit", (event: Event) => {
   event.preventDefault()
   const input: HTMLInputElement = form.elements.namedItem("text-input") as HTMLInputElement
-  const vowelCount: number = vowelCounter.countVowels(input.value)
+  const vowelCount: number = VowelCounter.count(input.value)
 
   resultSpan.innerText = `${vowelCount} vogais`
 })
