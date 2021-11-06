@@ -1,8 +1,14 @@
-export class vowelCounter {
-    static countVowels(str) {
-        const lowerCaseLetters = str.toLowerCase().split("");
+export class VowelCounter {
+    /**
+     * retorna o número de vogais em uma string.
+     *
+     * @param string - string a ser analisada
+     * @returns número de vogais
+     */
+    static count(string) {
+        const lowerCaseLetters = string.toLowerCase().split("");
         const vowelsInString = lowerCaseLetters.filter((letter) => this.VOWELS.includes(letter));
         return vowelsInString.length;
     }
 }
-vowelCounter.VOWELS = ["a", "e", "i", "o", "u"];
+VowelCounter.VOWELS = ["a", "e", "i", "o", "u"];
