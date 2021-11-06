@@ -32,17 +32,17 @@ const personList: Person[] = [
 const imperative: ScientistsImperative = new ScientistsImperative(personList)
 const functional: Scientists = new Scientists(personList)
 
-console.log(functional.getFieldbyId(1, "name")) // ada lovelace
+console.log(functional.getFieldById(1, "name")) // ada lovelace
 console.log(imperative.getFieldbyId(1, "name")) // ada lovelace
 
 functional.updateById(1, {name:"novo nome"})
 imperative.updateById(1, {name:"novo nome"})
 
-console.log(functional.getFieldbyId(1, "name")) // novo nome
+console.log(functional.getFieldById(1, "name")) // novo nome
 console.log(imperative.getFieldbyId(1, "name")) // novo nome
 
 functional.deleteById(1)
 imperative.deleteById(1)
 
-console.log(functional.getFieldbyId(1, "name")) // undefined
+console.log(functional.getFieldById(1, "name")) // undefined
 console.log(imperative.getFieldbyId(1, "name")) // undefined

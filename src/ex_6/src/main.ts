@@ -15,7 +15,7 @@ class Scientists {
    * @param field - o campo que se deseja retornar, pode ser "id" | "name" | "bio"
    * @returns o valor do campo especificado ou undefined
    */
-  getFieldbyId(id: number, field: Property): number | string | undefined {
+  getFieldById(id: number, field: Property): number | string | undefined {
     const scientist = this.scientists.find((scientist: Person) => scientist.id === id)
 
     if (scientist) {
@@ -35,11 +35,10 @@ class Scientists {
   updateById(id: number, update: Update): void {
     const scientistToUpdate = this.scientists.find((scientist: Person) => scientist.id === id)
 
-    if (!scientistToUpdate){
-      return undefined
+    if (scientistToUpdate){
+      const updatedScientist = {...scientistToUpdate, ...update}
+      this.scientists = this.scientists.map((scientist: Person) => scientist.id === id ? updatedScientist : scientist)
     }
-    const updatedScientist = {...scientistToUpdate, ...update}
-    this.scientists = this.scientists.map((scientist: Person) => scientist.id === id ? updatedScientist : scientist)
   }
 
   /**
