@@ -1,14 +1,14 @@
-interface Person {
+interface IPerson {
   id: number
   name: string
   bio: string
 }
 
-interface Update {
+interface IUpdate {
   name?: string
   bio?: string
 }
 
-type Property = keyof Person
+type TProperty = keyof IPerson
 
-export {Person, Update, Property}
+export {IPerson, IUpdate, TProperty}
