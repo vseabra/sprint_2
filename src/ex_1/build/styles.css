@@ -1,0 +1,18 @@
+body {
+    margin: 40px auto;
+    max-width: 1000px;
+    line-height: 1.6;
+    font-size: 18px;
+    color: #444;
+    padding: 0 10px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+button{
+  font-weight: bold;
+  border-radius: 5px;
+  min-width: 4.8em;
+  background-color: white;
+  color: black;
+}
+
