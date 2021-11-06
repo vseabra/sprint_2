@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Scientists = void 0;
-// não sou fã desse nome, mas fiquei sem idea.
 class Scientists {
     constructor(scientistList) {
         this.scientists = scientistList;
@@ -13,7 +12,7 @@ class Scientists {
      * @param field - o campo que se deseja retornar, pode ser "id" | "name" | "bio"
      * @returns o valor do campo especificado ou undefined
      */
-    getFieldbyId(id, field) {
+    getFieldById(id, field) {
         const scientist = this.scientists.find((scientist) => scientist.id === id);
         if (scientist) {
             return scientist[field];
@@ -31,11 +30,10 @@ class Scientists {
      */
     updateById(id, update) {
         const scientistToUpdate = this.scientists.find((scientist) => scientist.id === id);
-        if (!scientistToUpdate) {
-            return undefined;
+        if (scientistToUpdate) {
+            const updatedScientist = { ...scientistToUpdate, ...update };
+            this.scientists = this.scientists.map((scientist) => scientist.id === id ? updatedScientist : scientist);
         }
-        const updatedScientist = { ...scientistToUpdate, ...update };
-        this.scientists = this.scientists.map((scientist) => scientist.id === id ? updatedScientist : scientist);
     }
     /**
      * sobscreve a propriedade privada "scientists", removendo o scientista com o id especificado
