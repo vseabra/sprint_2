@@ -1,10 +1,9 @@
-import {Person, Update, Property} from "./types"
+import {IPerson, IUpdate, TProperty} from "./types"
 
-// não sou fã desse nome, mas fiquei sem idea.
 class Scientists {
-  private scientists: Person[]
+  private scientists: IPerson[]
 
-  constructor(scientistList: Person[]) {
+  constructor(scientistList: IPerson[]) {
     this.scientists = scientistList
   }
 
@@ -15,8 +14,8 @@ class Scientists {
    * @param field - o campo que se deseja retornar, pode ser "id" | "name" | "bio"
    * @returns o valor do campo especificado ou undefined
    */
-  getFieldById(id: number, field: Property): number | string | undefined {
-    const scientist = this.scientists.find((scientist: Person) => scientist.id === id)
+  getFieldById(id: number, field: TProperty): number | string | undefined {
+    const scientist: IPerson | undefined = this.scientists.find((scientist: IPerson) => scientist.id === id)
 
     if (scientist) {
       return scientist[field]
@@ -32,12 +31,12 @@ class Scientists {
    * @param update - o update que será aplicado ao scientista
    * @returns void
    */
-  updateById(id: number, update: Update): void {
-    const scientistToUpdate = this.scientists.find((scientist: Person) => scientist.id === id)
+  updateById(id: number, update: IUpdate): void {
+    const scientistToUpdate: IPerson | undefined = this.scientists.find((scientist: IPerson) => scientist.id === id)
 
     if (scientistToUpdate){
-      const updatedScientist = {...scientistToUpdate, ...update}
-      this.scientists = this.scientists.map((scientist: Person) => scientist.id === id ? updatedScientist : scientist)
+      const updatedScientist: IPerson = {...scientistToUpdate, ...update}
+      this.scientists = this.scientists.map((scientist: IPerson) => scientist.id === id ? updatedScientist : scientist)
     }
   }
 
@@ -48,7 +47,7 @@ class Scientists {
    * @returns void
    */
   deleteById(id: number): void {
-    this.scientists = this.scientists.filter((scientist: Person) => scientist.id !== id)
+    this.scientists = this.scientists.filter((scientist: IPerson) => scientist.id !== id)
   }
 }
 
