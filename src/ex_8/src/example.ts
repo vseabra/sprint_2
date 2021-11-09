@@ -29,8 +29,10 @@ const people: IPerson[] = [
 ]
 
 const scientists: Scientist[] = PersonFactory.createMany(people)
-const jean: Scientist = PersonFactory.createOne(people[4])
+scientists.forEach((scientist: Scientist) => console.log(`Nome: ${scientist.name} \nbio: ${scientist.bio}\n`))
 
-scientists.forEach((scientist: Scientist) => console.log(scientist.name))
-console.log("o inventor da linguagem de programação ada foi")
-console.log(jean.contribution)
+console.log("O nome inventor da linguagem de programação ADA é: ")
+console.log(
+  scientists
+    .find((scientist: Scientist) => scientist.contribution.includes("linguagem de programação ADA"))?.name
+)

@@ -1,23 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Scientist = exports.PersonFactory = void 0;
-var Scientist = /** @class */ (function () {
-    function Scientist(id, name, bio) {
+class Scientist {
+    constructor(id, name, bio) {
         this.id = id;
         this.name = name;
         this.bio = bio;
     }
-    Object.defineProperty(Scientist.prototype, "contribution", {
-        get: function () {
-            // não faz muito sentido, mas eu queria que Scientist fosse um pouco diferente do Iperson normal.
-            // talvez rescrever como um método normal, algo tipo: printContribution() ?
-            return this.bio;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    return Scientist;
-}());
+    get contribution() {
+        // não faz muito sentido, mas eu queria que Scientist fosse um pouco diferente do Iperson normal.
+        // talvez rescrever como um método normal, algo tipo: printContribution() ?
+        return this.bio;
+    }
+}
 exports.Scientist = Scientist;
 /**
  * contém metodos estáticos para criar objetos que implementem a interface Iperson.
@@ -26,9 +21,7 @@ exports.Scientist = Scientist;
  * Como na lista de exemplos todas as pessoas são cientistas essa classe sempre vai criar um cientista.
  * Se existissem outros tipos de pessoas essa classe deveria criar um objeto apropriado (que também implementaria Iperson).
  */
-var PersonFactory = /** @class */ (function () {
-    function PersonFactory() {
-    }
+class PersonFactory {
     /**
      * cria e retorna um objeto que implementa a interface IPerson
      *
@@ -38,20 +31,18 @@ var PersonFactory = /** @class */ (function () {
      * @param person - Iperson
      * @returns objeto que implementa a interface Iperson
      */
-    PersonFactory.createOne = function (person) {
-        var id = person.id, name = person.name, bio = person.bio;
+    static createOne(person) {
+        const { id, name, bio } = person;
         return new Scientist(id, name, bio);
-    };
+    }
     /**
      * cria e retorna um array de objetos que implementam a interface IPerson
      *
      * @param personList - um array de Iperson
      * @returns array de objetos que implementam a interface Iperson
      */
-    PersonFactory.createMany = function (personList) {
-        var _this = this;
-        return personList.map(function (person) { return _this.createOne(person); });
-    };
-    return PersonFactory;
-}());
+    static createMany(personList) {
+        return personList.map((person) => this.createOne(person));
+    }
+}
 exports.PersonFactory = PersonFactory;
