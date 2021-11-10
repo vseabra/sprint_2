@@ -1,48 +1,54 @@
-class NumericListImperative {
-  readonly list: number[] = []
+export class NumericListImperative {
+  public readonly list: number[] = []
 
-  constructor(unfiltedList: any[]) {
-    for (let i: number = 0; i < unfiltedList.length; i++) {
-      if (typeof unfiltedList[i] === "number" && !isNaN(unfiltedList[i])) {
-        this.list.push(unfiltedList[i])
-      }
-    }
+  constructor(unfilteredList: any[]) {
+    this.list = this.sanitize(unfilteredList)
   }
 
-  get smallest(): number {
+  private sanitize(unfilteredList: any[]): number[] {
+    const sanitizedList: number[] = []
+
+    for (const item of unfilteredList) {
+      if (typeof item === "number" && !isNaN(item)) {
+        sanitizedList.push(item)
+      }
+    }
+    return sanitizedList
+  }
+
+  public get smallest(): number {
     let smallest: number = Number.MAX_VALUE
 
-    for (let i: number = 0; i < this.list.length; i++) {
-      smallest = this.list[i] < smallest ? this.list[i] : smallest
+    for (const number of this.list) {
+      smallest = number < smallest ? number : smallest
     }
     return smallest
   }
 
-  get largest(): number {
+  public get largest(): number {
     let largest: number = Number.MIN_VALUE
 
-    for (let i: number = 0; i < this.list.length; i++) {
-      largest = this.list[i] > largest ? this.list[i] : largest
+    for (const number of this.list) {
+      largest = number > largest ? number : largest
     }
     return largest
   }
 
-  get sum(): number {
+  public get sum(): number {
     let sum: number = 0
 
-    for (let i: number = 0; i < this.list.length; i++) {
-      sum += this.list[i]
+    for (const number of this.list) {
+      sum += number
     }
     return sum
   }
 
-  get average(): number {
+  public get average(): number {
     return this.sum / this.list.length
   }
 
-  get smallestLargestAverage(): number[] {
+  public get smallestLargestAverage(): number[] {
     return [this.smallest, this.largest, this.average]
   }
 }
 
-export default NumericListImperative
