@@ -5,9 +5,9 @@ interface IPerson {
 }
 
 class Scientist implements IPerson {
-  readonly id: number
-  name: string
-  bio: string
+  public readonly id: number
+  public name: string
+  public bio: string
 
   constructor(id: number, name: string, bio: string) {
     this.id = id
@@ -15,9 +15,7 @@ class Scientist implements IPerson {
     this.bio = bio
   }
 
-  get contribution() {
-    // não faz muito sentido, mas eu queria que Scientist fosse um pouco diferente do Iperson normal.
-    // talvez rescrever como um método normal, algo tipo: printContribution() ?
+  public get contribution() {
     return this.bio
   }
 }
@@ -39,7 +37,7 @@ class PersonFactory {
    * @param person - Iperson
    * @returns objeto que implementa a interface Iperson
    */
-  static createOne(person: IPerson): Scientist  {
+  public static createOne(person: IPerson): Scientist  {
     const { id, name, bio } = person
     return new Scientist(id, name, bio)
   }
@@ -50,7 +48,7 @@ class PersonFactory {
    * @param personList - um array de Iperson
    * @returns array de objetos que implementam a interface Iperson
    */
-  static createMany(personList: IPerson[]): Scientist[] {
+  public static createMany(personList: IPerson[]): Scientist[] {
     return personList.map((person: IPerson) => this.createOne(person))
   }
 }
