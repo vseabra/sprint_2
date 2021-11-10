@@ -1,8 +1,8 @@
 export class NumericList {
-  public readonly list: number[]
+  public readonly list: number[];
 
   constructor(unfiltedList: any[]) {
-    this.list = this.sanitize(unfiltedList)
+    this.list = this.sanitize(unfiltedList);
   }
 
   /**
@@ -14,7 +14,7 @@ export class NumericList {
   private sanitize(list: any[]): number[] {
     return list
       .filter((item: any) => typeof item === "number")
-      .filter((number: number) => !isNaN(number))
+      .filter((number: number) => !isNaN(number));
   }
 
   /**
@@ -23,15 +23,15 @@ export class NumericList {
    * @returns o menor valor da lista
    */
   public get smallest(): number {
-    return Math.min(...this.list)
+    return Math.min(...this.list);
   }
 
   /** retorna o maior valor da lista
-   * 
+   *
    * @returns o maior valor da lista
    */
   public get largest(): number {
-    return Math.max(...this.list)
+    return Math.max(...this.list);
   }
 
   /** retorna a soma de todos os valores da lista
@@ -39,7 +39,7 @@ export class NumericList {
    * @returns a soma de todos os valores da lista
    */
   public get sum(): number {
-    return this.list.reduce((accumulator, current) => accumulator + current)
+    return this.list.reduce((accumulator, current) => accumulator + current);
   }
 
   /** retorna a média aritimetica dos valores da lista
@@ -48,7 +48,7 @@ export class NumericList {
    * @returns a média aritimetica dos valores da lista
    */
   public get average(): number {
-    return this.sum / this.list.length
+    return this.sum / this.list.length;
   }
 
   /** retorna uma lista que contém, em ordem: o menor valor, o maior valor e a média atitmetica de todos os valores da lista
@@ -56,7 +56,6 @@ export class NumericList {
    * @returns uma lista que contém, em ordem: o menor valor, o maior valor e a média atitmetica de todos os valores da lista
    */
   public get smallestLargestAverage(): number[] {
-    return [this.smallest, this.largest, this.average]
+    return [this.smallest, this.largest, this.average];
   }
 }
-
