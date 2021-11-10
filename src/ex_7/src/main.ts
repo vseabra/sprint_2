@@ -1,31 +1,34 @@
-class NumericList {
-  readonly list: number[]
+export class NumericList {
+  public readonly list: number[]
 
   constructor(unfiltedList: any[]) {
-    this.list = unfiltedList
-      .filter((item: any) => typeof item === "number")
-      .filter((number) => !isNaN(number))
+    this.list = this.sanitize(unfiltedList)
   }
 
-  get smallest(): number {
+  private sanitize(list: any[]): number[] {
+    return list
+      .filter((item: any) => typeof item === "number")
+      .filter((number: number) => !isNaN(number))
+  }
+
+  public get smallest(): number {
     return Math.min(...this.list)
   }
 
-  get largest(): number {
+  public get largest(): number {
     return Math.max(...this.list)
   }
 
-  get sum(): number {
+  public get sum(): number {
     return this.list.reduce((accumulator, current) => accumulator + current)
   }
 
-  get average(): number {
+  public get average(): number {
     return this.sum / this.list.length
   }
 
-  get smallestLargestAverage(): number[] {
+  public get smallestLargestAverage(): number[] {
     return [this.smallest, this.largest, this.average]
   }
 }
 
-export default NumericList
