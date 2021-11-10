@@ -14,7 +14,7 @@ class Scientists {
    * @param field - o campo que se deseja retornar, pode ser "id" | "name" | "bio"
    * @returns o valor do campo especificado ou undefined
    */
-  getFieldById(id: number, field: TProperty): number | string | undefined {
+  public getFieldById(id: number, field: TProperty): number | string | undefined {
     const scientist: IPerson | undefined = this.scientists.find((scientist: IPerson) => scientist.id === id)
 
     if (scientist) {
@@ -31,7 +31,7 @@ class Scientists {
    * @param update - o update que será aplicado ao scientista
    * @returns void
    */
-  updateById(id: number, update: IUpdate): void {
+  public updateById(id: number, update: IUpdate): void {
     const scientistToUpdate: IPerson | undefined = this.scientists.find((scientist: IPerson) => scientist.id === id)
 
     if (scientistToUpdate){
@@ -46,7 +46,7 @@ class Scientists {
    * @param id - o id do scientista
    * @returns void
    */
-  deleteById(id: number): void {
+  public deleteById(id: number): void {
     this.scientists = this.scientists.filter((scientist: IPerson) => scientist.id !== id)
   }
 }

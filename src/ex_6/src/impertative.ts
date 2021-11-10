@@ -18,7 +18,7 @@ class ScientistsImperative {
    * @param field - o campo que se deseja retornar, pode ser "id" | "name" | "bio"
    * @returns o valor do campo especificado ou undefined
    */
-  getFieldbyId(id: number, field: TProperty): number | string | undefined {
+  public getFieldbyId(id: number, field: TProperty): number | string | undefined {
     for (const scientist of this.scientists) {
       if (scientist.id === id) {
         return scientist[field]
@@ -34,7 +34,7 @@ class ScientistsImperative {
    * @param update - o update que será aplicado ao scientista
    * @returns void
    */
-  updateById(id: number, update: IUpdate): void {
+  public updateById(id: number, update: IUpdate): void {
     for (let i = 0; i < this.scientists.length; i++) {
       if (this.scientists[i].id === id) {
         this.scientists[i] = { ...this.scientists[i], ...update }
@@ -48,7 +48,7 @@ class ScientistsImperative {
    * @param id - o id do scientista
    * @returns void
    */
-  deleteById(id: number): void {
+  public deleteById(id: number): void {
     for (let i = 0; i < this.scientists.length; i++) {
       if (this.scientists[i].id === id) {
         this.scientists.splice(i, 1)
