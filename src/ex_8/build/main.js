@@ -8,8 +8,6 @@ class Scientist {
         this.bio = bio;
     }
     get contribution() {
-        // não faz muito sentido, mas eu queria que Scientist fosse um pouco diferente do Iperson normal.
-        // talvez rescrever como um método normal, algo tipo: printContribution() ?
         return this.bio;
     }
 }
