@@ -1,22 +1,22 @@
 interface IPerson {
-  readonly id: number
-  name: string
-  bio: string
+  readonly id: number;
+  name: string;
+  bio: string;
 }
 
 class Scientist implements IPerson {
-  public readonly id: number
-  public name: string
-  public bio: string
+  public readonly id: number;
+  public name: string;
+  public bio: string;
 
   constructor(id: number, name: string, bio: string) {
-    this.id = id
-    this.name = name
-    this.bio = bio
+    this.id = id;
+    this.name = name;
+    this.bio = bio;
   }
 
-  public get contribution() {
-    return this.bio
+  public get contribution(): string {
+    return this.bio;
   }
 }
 
@@ -37,9 +37,9 @@ class PersonFactory {
    * @param person - Iperson
    * @returns objeto que implementa a interface Iperson
    */
-  public static createOne(person: IPerson): Scientist  {
-    const { id, name, bio } = person
-    return new Scientist(id, name, bio)
+  public static createOne(person: IPerson): Scientist {
+    const { id, name, bio } = person;
+    return new Scientist(id, name, bio);
   }
 
   /**
@@ -49,8 +49,8 @@ class PersonFactory {
    * @returns array de objetos que implementam a interface Iperson
    */
   public static createMany(personList: IPerson[]): Scientist[] {
-    return personList.map((person: IPerson) => this.createOne(person))
+    return personList.map((person: IPerson) => this.createOne(person));
   }
 }
 
-export { PersonFactory, Scientist, IPerson }
+export { PersonFactory, Scientist, IPerson };

@@ -1,4 +1,4 @@
-import { PersonFactory, IPerson, Scientist } from "./main"
+import { PersonFactory, IPerson, Scientist } from "./main";
 
 const people: IPerson[] = [
   {
@@ -26,13 +26,16 @@ const people: IPerson[] = [
     name: "Jean Ichbiah",
     bio: "Jean Ichbiah foi um cientista da computação que inventou a linguagem de programação ADA",
   },
-]
+];
 
-const scientists: Scientist[] = PersonFactory.createMany(people)
-scientists.forEach((scientist: Scientist) => console.log(`Nome: ${scientist.name} \nbio: ${scientist.bio}\n`))
+const scientists: Scientist[] = PersonFactory.createMany(people);
+scientists.forEach((scientist: Scientist) =>
+  console.log(`Nome: ${scientist.name} \nbio: ${scientist.bio}\n`)
+);
 
-console.log("O nome inventor da linguagem de programação ADA é: ")
+console.log("O nome inventor da linguagem de programação ADA é: ");
 console.log(
-  scientists
-    .find((scientist: Scientist) => scientist.contribution.includes("linguagem de programação ADA"))?.name
-)
+  scientists.find((scientist: Scientist) =>
+    scientist.contribution.includes("linguagem de programação ADA")
+  )?.name
+);
