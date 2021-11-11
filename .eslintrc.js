@@ -15,8 +15,7 @@ module.exports = {
     indent: ["error", 2],
     "linebreak-style": ["error", "unix"],
     quotes: ["error", "double"],
-    semi: ["error", "never"],
     "@typescript-eslint/no-inferable-types": "off",
-    "tsdoc/syntax": "warn",
+
   },
 }
