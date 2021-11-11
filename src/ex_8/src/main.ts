@@ -32,7 +32,7 @@ class ScientistFactory {
     // então eu poderia fazer algo tipo: if classe.regex.test(bio) return new classe
     const mathematicianRegex = /matemátic[ao]/i;
     const computerScientistRegex = /cientista da computação/i;
-    const astronomerRegex = /astrônomo/i;
+    const astronomerRegex = /astrônom[oa]/i;
     const engineerRegex = /engenheir[oa]/i;
 
     if (mathematicianRegex.test(bio)) {
