@@ -16,6 +16,6 @@ module.exports = {
     "linebreak-style": ["error", "unix"],
     quotes: ["error", "double"],
     "@typescript-eslint/no-inferable-types": "off",
-    "tsdoc/syntax": "warn",
+
   },
 }
