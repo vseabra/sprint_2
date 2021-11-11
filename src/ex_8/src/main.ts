@@ -1,44 +1,52 @@
-interface IPerson {
-  readonly id: number;
-  name: string;
-  bio: string;
-}
-
-class Scientist implements IPerson {
-  public readonly id: number;
-  public name: string;
-  public bio: string;
-
-  constructor(id: number, name: string, bio: string) {
-    this.id = id;
-    this.name = name;
-    this.bio = bio;
-  }
-
-  public get contribution(): string {
-    return this.bio;
-  }
-}
+import {
+  Scientist,
+  IPerson,
+  Mathematician,
+  ComputerScientist,
+  Astronomer,
+  Engineer,
+} from "./types";
 
 /**
- * contém metodos estáticos para criar objetos que implementem a interface Iperson.
+ * contém metodos estáticos para criar objetos que implementem a interface Iperson e extendem a classe Scientist
  *
  * @remarks
- * Como na lista de exemplos todas as pessoas são cientistas essa classe sempre vai criar um cientista.
- * Se existissem outros tipos de pessoas essa classe deveria criar um objeto apropriado (que também implementaria Iperson).
+ * essa classe cria objetos que extendem a classe `Scientist` e implementam a interface `IPerson`.
+ * mas no momento esses classes não tem nenhum método unico a elas, na verdade elas são essencialmente um nome diferente para Scientist
  */
-class PersonFactory {
+class ScientistFactory {
+
   /**
    * cria e retorna um objeto que implementa a interface IPerson
    *
    * @remarks
-   * Se existissem outros tipos de pessoas esse metódo deveria indentificar qual tipo de pessoa criar e criar o objeto apropriado
-   * eu poderia descubir o tipo de pessoa com um regex na bio, procurando por inventor, matematico, etc. mas teriam possiveis falsos positivos.
+   * Usa uma regex na bio para determinar a classe que sera instanciada. mas no momento todas as classes são essencialmente idênticas.
+   * Também podem haver falsos positivos com o regex, por exemplo: fulano.bio = "fulano NÂO foi matématico" seria um matemático.
    * @param person - Iperson
    * @returns objeto que implementa a interface Iperson
    */
   public static createOne(person: IPerson): Scientist {
     const { id, name, bio } = person;
+
+    // TODO talvez colocar esses regex como membro estático da classe que eles verificam?
+    // então eu poderia fazer algo tipo: if classe.regex.test(bio) return new classe
+    const mathematicianRegex = /matemátic[ao]/i;
+    const computerScientistRegex = /cientista da computação/i;
+    const astronomerRegex = /astrônomo/i;
+    const engineerRegex = /engenheir[oa]/i;
+
+    if (mathematicianRegex.test(bio)) {
+      return new Mathematician(id, name, bio);
+    }
+    if (computerScientistRegex.test(bio)) {
+      return new ComputerScientist(id, name, bio);
+    }
+    if (astronomerRegex.test(bio)) {
+      return new Astronomer(id, name, bio);
+    }
+    if (engineerRegex.test(bio)) {
+      return new Engineer(id, name, bio);
+    }
     return new Scientist(id, name, bio);
   }
 
@@ -53,4 +61,4 @@ class PersonFactory {
   }
 }
 
-export { PersonFactory, Scientist, IPerson };
+export { ScientistFactory, Scientist, IPerson };

@@ -29,8 +29,7 @@ const people = [
         bio: "Jean Ichbiah foi um cientista da computação que inventou a linguagem de programação ADA",
     },
 ];
-const scientists = main_1.PersonFactory.createMany(people);
+const scientists = main_1.ScientistFactory.createMany(people);
 scientists.forEach((scientist) => console.log(`Nome: ${scientist.name} \nbio: ${scientist.bio}\n`));
 console.log("O nome inventor da linguagem de programação ADA é: ");
-console.log((_a = scientists
-    .find((scientist) => scientist.contribution.includes("linguagem de programação ADA"))) === null || _a === void 0 ? void 0 : _a.name);
+console.log((_a = scientists.find((scientist) => scientist.contribution.includes("linguagem de programação ADA"))) === null || _a === void 0 ? void 0 : _a.name);

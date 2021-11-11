@@ -1,4 +1,4 @@
-import { PersonFactory, IPerson, Scientist } from "./main";
+import { ScientistFactory, IPerson, Scientist } from "./main";
 
 const people: IPerson[] = [
   {
@@ -28,7 +28,7 @@ const people: IPerson[] = [
   },
 ];
 
-const scientists: Scientist[] = PersonFactory.createMany(people);
+const scientists: Scientist[] = ScientistFactory.createMany(people);
 scientists.forEach((scientist: Scientist) =>
   console.log(`Nome: ${scientist.name} \nbio: ${scientist.bio}\n`)
 );
