@@ -44,4 +44,11 @@ class Astronomer extends Scientist {
   }
 }
 
-export { IPerson, Scientist, ComputerScientist, Mathematician, Engineer, Astronomer };
+enum ScientistType {
+  ComputerScientist,
+  Mathematician,
+  Engineer,
+  Astronomer,
+}
+
+export { IPerson, Scientist, ComputerScientist, Mathematician, Engineer, Astronomer, ScientistType };

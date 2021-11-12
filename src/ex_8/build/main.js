@@ -15,41 +15,26 @@ class ScientistFactory {
      * cria e retorna um objeto que implementa a interface IPerson
      *
      * @remarks
-     * Usa uma regex na bio para determinar a classe que sera instanciada. mas no momento todas as classes são essencialmente idênticas.
-     * Também podem haver falsos positivos com o regex, por exemplo: fulano.bio = "fulano NÂO foi matématico" seria um matemático.
+     * @param type = o tipo de objeto a ser criado
      * @param person - Iperson
      * @returns objeto que implementa a interface Iperson
      */
-    static createOne(person) {
+    static createOne(person, type) {
         const { id, name, bio } = person;
-        // TODO talvez colocar esses regex como membro estático da classe que eles verificam?
-        // então eu poderia fazer algo tipo: if classe.regex.test(bio) return new classe
-        const mathematicianRegex = /matemátic[ao]/i;
-        const computerScientistRegex = /cientista da computação/i;
-        const astronomerRegex = /astrônomo/i;
-        const engineerRegex = /engenheir[oa]/i;
-        if (mathematicianRegex.test(bio)) {
-            return new types_1.Mathematician(id, name, bio);
+        switch (type) {
+            case types_1.ScientistType.Mathematician: {
+                return new types_1.Mathematician(id, name, bio);
+            }
+            case types_1.ScientistType.Engineer: {
+                return new types_1.Engineer(id, name, bio);
+            }
+            case types_1.ScientistType.ComputerScientist: {
+                return new types_1.ComputerScientist(id, name, bio);
+            }
+            case types_1.ScientistType.Astronomer: {
+                return new types_1.Astronomer(id, name, bio);
+            }
         }
-        if (computerScientistRegex.test(bio)) {
-            return new types_1.ComputerScientist(id, name, bio);
-        }
-        if (astronomerRegex.test(bio)) {
-            return new types_1.Astronomer(id, name, bio);
-        }
-        if (engineerRegex.test(bio)) {
-            return new types_1.Engineer(id, name, bio);
-        }
-        return new types_1.Scientist(id, name, bio);
-    }
-    /**
-     * cria e retorna um array de objetos que implementam a interface IPerson
-     *
-     * @param personList - um array de Iperson
-     * @returns array de objetos que implementam a interface Iperson
-     */
-    static createMany(personList) {
-        return personList.map((person) => this.createOne(person));
     }
 }
 exports.ScientistFactory = ScientistFactory;

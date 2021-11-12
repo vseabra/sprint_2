@@ -1,4 +1,13 @@
-import { ScientistFactory, IPerson, Scientist } from "./main";
+import {
+  Scientist,
+  IPerson,
+  Mathematician,
+  ComputerScientist,
+  Astronomer,
+  Engineer,
+  ScientistType,
+} from "./types";
+import {ScientistFactory} from "./main";
 
 const people: IPerson[] = [
   {
@@ -28,7 +37,14 @@ const people: IPerson[] = [
   },
 ];
 
-const scientists: Scientist[] = ScientistFactory.createMany(people);
+const adaLovelace: Mathematician = ScientistFactory.createOne(people[0], ScientistType.Mathematician);
+const alanTuring: ComputerScientist = ScientistFactory.createOne(people[1], ScientistType.ComputerScientist);
+const nikolaTesla: Engineer = ScientistFactory.createOne(people[2], ScientistType.Engineer);
+const nicolauCopernico: Astronomer = ScientistFactory.createOne(people[3], ScientistType.Astronomer);
+const jeanIchbiah: Astronomer = ScientistFactory.createOne(people[4], ScientistType.ComputerScientist);
+
+const scientists: Scientist[] = [adaLovelace, alanTuring, nikolaTesla, nicolauCopernico, jeanIchbiah];
+
 scientists.forEach((scientist: Scientist) =>
   console.log(`Nome: ${scientist.name} \nbio: ${scientist.bio}\n`)
 );

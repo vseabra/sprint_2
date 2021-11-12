@@ -1,6 +1,7 @@
 "use strict";
 var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
+const types_1 = require("./types");
 const main_1 = require("./main");
 const people = [
     {
@@ -29,7 +30,12 @@ const people = [
         bio: "Jean Ichbiah foi um cientista da computação que inventou a linguagem de programação ADA",
     },
 ];
-const scientists = main_1.ScientistFactory.createMany(people);
+const adaLovelace = main_1.ScientistFactory.createOne(people[0], types_1.ScientistType.Mathematician);
+const alanTuring = main_1.ScientistFactory.createOne(people[1], types_1.ScientistType.ComputerScientist);
+const nikolaTelsta = main_1.ScientistFactory.createOne(people[2], types_1.ScientistType.Engineer);
+const nicolauCopernico = main_1.ScientistFactory.createOne(people[3], types_1.ScientistType.Astronomer);
+const jeanIchbiah = main_1.ScientistFactory.createOne(people[4], types_1.ScientistType.ComputerScientist);
+const scientists = [adaLovelace, alanTuring, nikolaTelsta, nicolauCopernico, jeanIchbiah];
 scientists.forEach((scientist) => console.log(`Nome: ${scientist.name} \nbio: ${scientist.bio}\n`));
 console.log("O nome inventor da linguagem de programação ADA é: ");
 console.log((_a = scientists.find((scientist) => scientist.contribution.includes("linguagem de programação ADA"))) === null || _a === void 0 ? void 0 : _a.name);
